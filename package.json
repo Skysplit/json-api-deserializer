@@ -1,0 +1,16 @@
+{
+  "name": "json-api-deserializer",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "NODE_ENV=testing ./node_modules/mocha/bin/mocha -c --recursive test/*.test.js",
+    "test:watch": "NODE_ENV=testing ./node_modules/mocha/bin/mocha -c --recursive --watch test/*.test.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.3.0"
+  }
+}
