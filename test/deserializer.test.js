@@ -1,6 +1,6 @@
 const { expect } = require('chai');
 const deserialize = require('../');
-const { deepNested, circular } = require('./fixtures')
+const { threeLevel, fourLevel, circular } = require('./fixtures')
 
 describe('#deserializer', function () {
   it('should handle circular dependecies', function () {
@@ -15,8 +15,8 @@ describe('#deserializer', function () {
     expect(post.comments[0].author).to.exist;
   });
 
-  it('should properly deserialize nested resources', function () {
-    const json = deserialize(deepNested);
+  it('should properly deserialize 3-level nested resources', function () {
+    const json = deserialize(threeLevel);
     expect(json).to.have.lengthOf(2);
 
     const [first, second] = json;
@@ -29,4 +29,19 @@ describe('#deserializer', function () {
     expect(first.comments[1].author).to.eql(first.comments[2].author);
     expect(first.comments[1].id).to.not.eql(first.comments[2].id);
   });
-})
+  
+  it("should properly deserialize 4-level nested resources", function () {
+    const json = deserialize(fourLevel);
+    
+    expect(json).to.have.lengthOf(1);
+    
+    const post = json[0];
+    expect(post.id).to.eql(1);
+    expect(post.comments).to.have.lengthOf(1);
+    
+    const comment = post.comments[0];
+    expect(comment.id).to.eql(1);
+    expect(comment.author).to.exist;
+    expect(comment.author.avatar).to.exist;
+  });
+});

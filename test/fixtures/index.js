@@ -1,4 +1,5 @@
 module.exports = {
   circular: require('./circular'),
-  deepNested: require('./deep-nested'),
+  threeLevel: require('./three-level'),
+  fourLevel: require('./four-level'),
 };
