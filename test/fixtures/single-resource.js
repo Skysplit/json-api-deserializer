@@ -7,8 +7,10 @@ module.exports = {
     },
     relationships: {
       author: {
-        type: 'users',
-        id: 1
+        data: {
+          type: 'users',
+          id: 1
+        }
       }
     }
   },

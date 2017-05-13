@@ -1,6 +1,6 @@
 const { expect } = require('chai');
 const deserialize = require('../');
-const { threeLevel, fourLevel, circular } = require('./fixtures')
+const { threeLevel, fourLevel, circular, singleResource } = require('./fixtures')
 
 describe('#deserializer', function () {
   it('should handle circular dependecies', function () {
@@ -46,6 +46,7 @@ describe('#deserializer', function () {
 
   it('should properly deserialize single object', function () {
     const json = deserialize(singleResource);
+    console.log(json);
     expect(json).to.exist;
     expect(json.id).to.eql(1);
     expect(json.content).to.eql('lorem ipsum');
