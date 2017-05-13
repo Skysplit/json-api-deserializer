@@ -29,19 +29,27 @@ describe('#deserializer', function () {
     expect(first.comments[1].author).to.eql(first.comments[2].author);
     expect(first.comments[1].id).to.not.eql(first.comments[2].id);
   });
-  
-  it("should properly deserialize 4-level nested resources", function () {
+
+  it('should properly deserialize 4-level nested resources', function () {
     const json = deserialize(fourLevel);
-    
     expect(json).to.have.lengthOf(1);
-    
+
     const post = json[0];
     expect(post.id).to.eql(1);
     expect(post.comments).to.have.lengthOf(1);
-    
+
     const comment = post.comments[0];
     expect(comment.id).to.eql(1);
     expect(comment.author).to.exist;
     expect(comment.author.avatar).to.exist;
+  });
+
+  it('should properly deserialize single object', function () {
+    const json = deserialize(singleResource);
+    expect(json).to.exist;
+    expect(json.id).to.eql(1);
+    expect(json.content).to.eql('lorem ipsum');
+    expect(json.author).to.exist;
+    expect(json.author.name).to.eql('John');
   });
 });
