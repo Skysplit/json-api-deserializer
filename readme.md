@@ -5,7 +5,7 @@
 ## Usage
 
 ```js
-const deserialize = require('deserializer');
+const deserialize = require('json-api-deserializer');
 
 const jsonApiData = {
   data: [
