@@ -25,10 +25,10 @@ const parseResources = (list) => {
 
 const mapRelationsToResources = (list, resources) =>
   normalizeToArray(list).map(
-    ({ id, type, relationships = {} }) => injectRelations(id, type, relationships, resources)
+    ({ id, type, relationships = {} }) => injectRelations(id, type, resources, relationships)
   );
 
-const injectRelations = (id, type, relationships = {}, resources) => {
+const injectRelations = (id, type, resources, relationships = {}) => {
   return Object.keys(relationships).map((name) => {
     const { data } = relationships[name];
     let relation;
