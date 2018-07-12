@@ -17,7 +17,7 @@ const parseResources = (list) => {
     const { type, id, attributes } = resource;
 
     resources[type] = resources[type] || {};
-    resources[type][id] = Object.assign({ id }, attributes);
+    resources[type][id] = Object.assign({ id, type }, attributes);
   }
 
   return resources;
