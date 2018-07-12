@@ -48,6 +48,7 @@ describe('#deserializer', function () {
     const json = deserialize(singleResource);
     expect(json).to.exist;
     expect(json.id).to.eql(1);
+    expect(json.type).to.eql('posts');
     expect(json.content).to.eql('lorem ipsum');
     expect(json.author).to.exist;
     expect(json.author.name).to.eql('John');
